@@ -9,7 +9,6 @@ public class CompoundInterest {
         double interestRate = getInterestRate();
         double payment = getPayment();
         double interestTotal = 0;
-        double newInterestPay = 0;
         double newPrincipalPay = 0;
         int counter = 1;
         System.out.println(
@@ -18,7 +17,7 @@ public class CompoundInterest {
                 "    Pay per month: " + payment
         );
         while (principal > 0.0 || counter >= 361) {
-            newInterestPay = calcInterestMonthly(interestRate, principal);
+            double newInterestPay = calcInterestMonthly(interestRate, principal);
             newPrincipalPay = calcPrincPayment(interestRate, principal, payment);
             interestTotal = interestTotal + newInterestPay;
             principal = principal - newPrincipalPay;
@@ -33,7 +32,7 @@ public class CompoundInterest {
             );
             System.out.println(output);
             counter++;
-        };
+        }
         System.out.println("Total Paid: " + String.format("%.2f",(counter -1) * payment + newPrincipalPay) + "    Total Interest Paid: "+ String.format("%.2f",interestTotal) );
     }
 
